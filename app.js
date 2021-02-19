@@ -11,6 +11,9 @@ var handlebars = require('express3-handlebars')
 var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
+var library = require('./routes/library');
+var read = require('./routes/read');
+
 
 var app = express();
 
@@ -37,6 +40,8 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
+app.get('/library',library.viewReadings);
+app.get('/library/read',read.viewWords);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
